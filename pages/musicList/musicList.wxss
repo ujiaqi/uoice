@@ -1,0 +1,143 @@
+/* pages/musicList/musicList.wxss */
+
+text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+}
+
+.header {
+    box-sizing: border-box;
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20rpx;
+    position: relative;
+    overflow: hidden;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -100;
+    width: 100%;
+    height: 550rpx;
+    filter: blur(50px);
+}
+
+.cover {
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 20rpx;
+    box-shadow: 0rpx -27rpx 5rpx -14rpx rgba(218, 218, 218, 0.2); 
+}
+
+
+.listInfo {
+    width: 50vw;
+    display: flex;
+    height: 15vh;
+    flex-direction: column;
+    margin-left: 40rpx;
+    justify-content: space-between;
+    position: relative;
+}
+
+
+.title{
+    font-size: 30rpx;
+    color: white;
+    opacity: 0.8;
+}
+
+.creator {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 30%;
+}
+
+.creatorAvatar {
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+}
+
+
+.creatorName {
+    margin-left: 20rpx;
+    color:white;
+    opacity: 0.5;
+    font-size: 24rpx;
+}
+
+.desc {
+    color:white;
+    opacity: 0.5;
+    font-size: 24rpx;
+    height: 35rpx;
+    overflow: hidden;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    height: 100rpx;
+    margin: 25rpx 20rpx;
+}
+
+.musicInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.musicInfo text {
+    width: 70vw;
+} 
+
+.index {
+    margin: 0 30rpx 0 10rpx;
+    width: 50rpx;
+    text-align: center;
+    color: rgb(150, 150, 150);
+}
+
+.author {
+    color:rgb(150, 150, 150);
+    font-size:24rpx;
+}
+
+
+.listContainer {
+    height: 90vh;
+}
+
+.tip {
+    font-size: 28rpx;
+    color: #aaa;
+    width: 100%;
+    margin-top: 50rpx;
+    text-align: center;
+  }
+
+  .bottom {
+      width: 100%;
+      height: 1rpx;
+      margin-bottom: 90rpx;
+  }
+
+  .loadingContainer {
+    width: 100%;
+    text-align: center;
+    margin: -75rpx 0 133rpx 0;
+}
+
+.isMore {
+    color: #aaa;
+    font-size: 28rpx;
+    width: 100%;
+    text-align: center;
+}

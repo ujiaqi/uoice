@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "bottomControl": "/components/bottomControl/bottomControl"
+  },
+  "navigationStyle": "custom"
+}

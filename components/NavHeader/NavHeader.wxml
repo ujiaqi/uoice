@@ -1,0 +1,6 @@
+<view class="header">
+    <text class="tuijian">{{title}}</text>
+    <view class="more">
+        <text>更多</text>
+    </view>
+</view>

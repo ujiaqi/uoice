@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/personal/personal",
+    "pages/musicListSquare/musicListSquare",
+    "pages/search/search",
+    "pages/video/video",
+    "pages/comment/comment",
+    "pages/songDetail/songDetail",
+    "pages/musicList/musicList",
+    "pages/recommendSong/recommendSong",
+    "pages/videoPlayer/videoPlayer",
+    "pages/login/login"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#dc2c1f",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "Uovice"
+  },
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#d43c33",
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "发现",
+        "iconPath": "/static/images/tabs/music.png",
+        "selectedIconPath": "/static/images/tabs/music-selected.png"
+      },
+      {
+        "pagePath": "pages/video/video",
+        "text": "视频",
+        "iconPath": "/static/images/tabs/video.png",
+        "selectedIconPath": "/static/images/tabs/video-selected.png"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "text": "我的",
+        "iconPath": "/static/images/tabs/mine.png",
+        "selectedIconPath": "/static/images/tabs/mine-selected.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "requiredBackgroundModes": [
+    "audio"
+  ]
+}

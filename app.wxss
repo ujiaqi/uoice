@@ -1,0 +1,8 @@
+@import "/static/iconfont/iconfont.wxss";
+@import '/miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss';
+@import '/static/weui.wxss';
+
+page {
+    height: 100%;
+}
+

@@ -1,0 +1,74 @@
+<!-- 开屏动画 -->
+<view class="start" style="display:{{isStartShow?'':'none'}}">
+  <mp-loading show="true"></mp-loading>
+</view>
+<view class="indexContainer">
+  <!-- 搜索框 -->
+  <view class="header">
+    <view class="search" bindtap="toSearch">搜索框</view>
+  </view>
+  <!-- 轮播图板块 -->
+  <view class="bannerContainer">
+    <swiper class="banners" indicator-dots indicator-color="#e6e6e6" indicator-active-color="#ec4141" autoplay circular>
+      <swiper-item wx:for="{{bannerList?bannerList:''}}" wx:key="bannerId">
+        <image src="{{item.pic}}" alt="" lazy-load></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 五个图标导航区域 -->
+  <view class="navContainer">
+    <view class="navItem">
+      <text class="iconfont icon-meirituijian" bindtap="goToRecommend"></text>
+      <text>每日推荐</text>
+    </view>
+    <view class="navItem">
+      <text class="iconfont icon-gedan1" bindtap="goToMusicListSquare"></text>
+      <text>歌单</text>
+    </view>
+    <view class="navItem">
+      <text class="iconfont icon-icon-ranking"></text>
+      <text>排行榜</text>
+    </view>
+    <view class="navItem">
+      <text class="iconfont icon-diantai"></text>
+      <text>播客</text>
+    </view>
+    <view class="navItem">
+      <text class="iconfont icon-zhiboguankanliangbofangsheyingshexiangjixianxing"></text>
+      <text>直播</text>
+    </view>
+  </view>
+  <!-- 推荐歌曲区域 -->
+  <view class="recommendContainer">
+    <!-- 头部区域 -->
+    <NavHeader title="推荐歌单"></NavHeader>
+    <!-- 内容区域 -->
+    <scroll-view class="recommendScroll" enable-flex scroll-x enhanced show-scrollbar="{{false}}">
+      <view class="scrollItem" wx:for="{{recommendList}}" wx:key="id" wx:key="index" bindtap="toMusicList" data-musiclistid="{{recommendList[index].id}}">
+        <image src="{{item.picUrl}}?param=200y200" lazy-load></image>
+        <text>{{item.name}}</text>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 排行榜区域 -->
+  <view class="topList">
+    <!-- 头部区域 -->
+    <NavHeader title="排行榜"></NavHeader>
+    <!-- 内容区域 -->
+    <swiper class="topListSwiper" circular next-margin="50rpx" bindchange="getCurrentPage">
+      <swiper-item wx:for="{{topList?topList:''}}" wx:key="name">
+        <view class="swiperItem">
+          <view class="title">{{item.name}}</view>
+          <view class="musicItem" wx:for="{{item.tracks?item.tracks:''}}" bindtap="toSongDetail" data-song="{{track.id}}" wx:key="id" wx:for-item="track" wx:for-index="idx">
+            <image src="{{track.picUrl}}?param=100y100" lazy-load></image>
+            <text class="count">{{idx+1}}</text>
+            <text class="musicName">{{track.name}}</text>
+            <view class="fenge">-</view>
+            <text class="authorName">{{track.author}}</text>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+    <bottomControl></bottomControl>
+  </view>
+</view>

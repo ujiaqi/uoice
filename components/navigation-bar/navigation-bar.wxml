@@ -1,0 +1,3 @@
+<view class="header" bindtap="handleGoBack" style="transform:translateY(calc({{barHeight}}px - 3vh))">
+    <text class="iconfont .icon-fanhui goBack"></text>
+</view>

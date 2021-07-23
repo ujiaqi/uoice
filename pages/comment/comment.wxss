@@ -1,0 +1,38 @@
+/* pages/comment/comment.wxss */
+page {
+    height: 100%;
+    /* background-color: pink; */
+    color: #343434;
+}
+
+
+.header {
+    height: 50rpx;
+    width: 100%;
+    line-height: 50rpx;
+    font-size: 28rpx;
+    font-weight: 600;
+    color:#1f1f1f;
+    padding:30rpx 40rpx 10rpx;
+}
+
+.commentList{
+    margin: 0 30rpx;
+    height: calc(100vh - 90rpx);
+}
+
+
+.mask{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background-color: rgba(0,0,0,0.3);
+    display: none;
+}
+
+.showMask {
+    display: block;
+}

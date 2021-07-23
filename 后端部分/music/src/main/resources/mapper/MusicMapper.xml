@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uoice.music.mapper.MusicMapper">
+    
+    <select id="getBanner" resultType="banner">
+        select * from banners
+    </select>
+
+    <select id="getRecommend" resultType="recommend">
+        select * from recommend
+    </select>
+
+    <select id="getRecommendDetail" resultType="recommend">
+        select * from recommend where id = #{id}
+    </select>
+
+
+    <select id="getSong" resultType="song">
+        select * from song
+    </select>
+
+    <select id="getSongDetail" resultType="song">
+        select * from song where id = #{ids}
+    </select>
+
+
+</mapper>

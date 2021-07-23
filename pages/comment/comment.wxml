@@ -1,0 +1,8 @@
+<view class="commentContainer">
+    <!-- 头部 -->
+    <view class="header">评论区 ({{total}})</view>
+    
+    <!-- 遮罩层 -->
+    <view class="mask {{isFloorCommentListShow?'showMask':''}}" bindtap="hideList"></view>
+    
+</view>

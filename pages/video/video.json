@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "bottomControl": "/components/bottomControl/bottomControl",
+    "mp-loading": "weui-miniprogram/loading/loading"
+  },
+  "navigationBarTitleText": "Video"
+}

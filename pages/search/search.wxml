@@ -1,0 +1,134 @@
+<view class="searchContainer">
+    <view class="inputArea">
+        <text class="iconfont .icon-fanhui returnButton" bindtap="goBack"></text>
+        <input type="text" class="search" value="{{searchValue}}" bindconfirm="confirmSearch" bindinput="typing" focus placeholder="{{searchDefault}}" placeholder-style="color:rgba(255,255,255,0.4);" />
+        <text class="cleanInput" bindtap="cleanInput">×</text>
+    </view>
+    <!-- 第一页面 -->
+    <view class="{{state==0?'':'first'}}">
+        <!-- 搜索历史 -->
+        <view class="historyContainer">
+            <text class="historyHead">历史</text>
+            <scroll-view class="searchHistory" scroll-x>
+                <view class="historyItem" wx:for="{{searchHistory}}" catchtap="tapSearchHistory" data-searchword="{{item}}" wx:key="index">
+                    {{item}}
+                </view>
+            </scroll-view>
+            <text class="deleteHistory" bindtap="deleteHistory">×</text>
+        </view>
+        <!-- 热搜榜 -->
+        <view class="hotSearchContainer">
+            <view class="hotSearchHead">热搜榜</view>
+            <view class="hotSearchList" wx:if="{{hotSearch.length!=0}}">
+                <view class="hotSearchListItem" wx:for="{{hotSearch}}" bindtap="handleTapHotSearch" data-searchword="{{item.searchWord}}" wx:key="index">
+                    <text class="index topThreeIndex">{{index+1}}</text>
+                    <text class="musicName">{{item.searchWord}}</text>
+                </view>
+            </view>
+            <!-- loading组件 -->
+            <view class="loadingContainer" wx:else>
+                <mp-loading></mp-loading>
+            </view>
+        </view>
+    </view>
+    <!-- 第二页面 -->
+    <view class="{{state==1?'':'second'}}">
+        <scroll-view class="suggestList" scroll-y wx:if="{{suggest.length!==0}}">
+            <view class="suggestItem" wx:for="{{suggest}}" bindtap="chooseSuggest" data-keyword="{{item.keyword}}" wx:key="index">
+                <text class="iconfont icon-14"></text>
+                <text class="suggestContent">{{item.keyword}}</text>
+            </view>
+        </scroll-view>
+        <!-- loading组件 -->
+        <view class="loadingContainer" wx:else>
+            <mp-loading></mp-loading>
+        </view>
+    </view>
+    <!-- 第三页面 -->
+    <view class="{{state==2?'':'third'}}">
+        <!-- 搜索类型 -->
+        <view class="searchType">
+            <view class="selectBox" style="left:{{left}}%"></view>
+            <view class="searchTypeItem {{searchType==0?'selectedType':''}}" bindtap="changeTypeByTap" id="0">
+                单曲
+            </view>
+            <view class="searchTypeItem {{searchType==1?'selectedType':''}}" bindtap="changeTypeByTap" id="1">
+                歌单
+            </view>
+            <view class="searchTypeItem {{searchType==2?'selectedType':''}}" bindtap="changeTypeByTap" id="2">
+                视频
+            </view>
+        </view>
+        <swiper class="searchResultType" bindchange="handleChangeType" current="{{searchType}}">
+            <swiper-item class="music">
+                <!-- loading组件 -->
+                <view class="loadingContainer" wx:if="{{searchResult[searchType].length==0}}">
+                    <mp-loading></mp-loading>
+                </view>
+                <!-- 搜索结果列表 -->
+                <scroll-view class="resultList" scroll-y wx:else bindscrolltolower="handleResultListBottom">
+                    <view class="resultListItem" wx:for="{{searchResult[searchType]}}" bindtap="toSongDetail" data-musicid="{{item.id}}" wx:key="index">
+                        <view class="resultMusicName">{{item.name}}</view>
+                        <view class="resultMusicInfo">
+                            <text class="author">{{item.artists[0].name}}</text>
+                            <view class="fenge">-</view>
+                            <text class="album">{{item.album.name}}</text>
+                        </view>
+                    </view>
+                    <!-- loading组件 -->
+                    <view class="resultLoadingContainer {{hasMore==false?'hideLoading':''}}">
+                        <mp-loading></mp-loading>
+                    </view>
+                </scroll-view>
+            </swiper-item>
+            <!-- 歌单列表 -->
+            <swiper-item class="musicList">
+                <!-- loading组件 -->
+                <view class="loadingContainer" wx:if="{{searchResult[searchType].length==0}}">
+                    <mp-loading></mp-loading>
+                </view>
+                <!-- 搜索结果列表 -->
+                <scroll-view class="resultList" wx:else scroll-y bindscrolltolower="handleResultListBottom">
+                    <view class="resultListItem musicListItem" wx:for="{{searchResult[searchType]}}" bindtap="toMusicList" data-musiclistid="{{item.id}}" wx:key="index">
+                        <image class="listAvatar" src="{{item.coverImgUrl}}"></image>
+                        <view class="listInfo">
+                            <text class="listName">{{item.name}}</text>
+                            <text class="listDetail">
+                                {{item.trackCount}}首,by {{item.creator.nickname}},播放{{item.playCount>=10000?item.playingCount/10000+'万':item.playCount}}次
+                            </text>
+                        </view>
+                    </view>
+                    <!-- loading组件 -->
+                    <view class="resultLoadingContainer {{hasMore==false?'hideLoading':''}}">
+                        <mp-loading></mp-loading>
+                    </view>
+                </scroll-view>
+            </swiper-item>
+            <!-- 视频列表 -->
+            <swiper-item class="musicList">
+                <!-- loading组件 -->
+                <view class="loadingContainer" wx:if="{{searchResult[searchType].length==0}}">
+                    <mp-loading></mp-loading>
+                </view>
+                <!-- 搜索结果列表 -->
+                <scroll-view class="resultList" wx:else scroll-y bindscrolltolower="handleResultListBottom">
+                    <view class="resultListItem videoListItem" wx:for="{{searchResult[searchType]}}" wx:key="index">
+                        <view class="videoInfo">
+                            <view class="creator">
+                                <image class="creatorAvatar" src="/static/images/nvsheng.jpg" lazy-load></image>
+                                <text class="creatorName">{{item.creator[0].userName}}</text>
+                            </view>
+                            <view class="videoInfoContent">{{item.title}}</view>
+                        </view>
+                        <image class="videoCover" lazy-load src="{{item.coverUrl}}" mode="aspectFill" bindtap="playVideo" data-videovid="{{item.vid}}"></image>
+                    </view>
+                    <!-- loading组件 -->
+                    <view class="resultLoadingContainer {{hasMore==false?'hideLoading':''}}">
+                        <mp-loading></mp-loading>
+                    </view>
+                </scroll-view>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>
+<bottomControl></bottomControl>

@@ -1,0 +1,279 @@
+page {
+    background-color: #f5f5f5;
+    height: 100%;
+}
+
+.personalContainer {
+    width: 100%;
+    margin-bottom: 12vh;
+    /* height: 100%; */
+    /* overflow: hidden; */
+  }
+  
+  .personalContainer .user-section {
+    height: 520rpx;
+    position: relative;
+    padding: 100rpx 30rpx 0;
+  }
+  .user-section .bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  
+  .user-info-box{
+    height: 180rpx;
+    display:flex;
+    align-items:center;
+    position:relative;
+    z-index: 1;
+    top: 100%;
+    transform: translateY(-70%);
+    z-index: 0;
+  }
+  
+  .user-info-box .portrait{
+    width: 130rpx;
+    height: 130rpx;
+    /* border:5rpx solid #fff; */
+    border-radius: 20rpx;
+  }
+  .user-info-box .username{
+    font-size: 24;
+    color: #f5f5f5;
+    font-weight: 500;
+    margin-left: 20rpx;
+  }
+  
+  
+  /* vip-box */
+  .vip-card-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  /* background: linear-gradient(left, red, black); */
+    background: rgba(0, 0, 0, .7);
+    height: 240rpx;
+    color: #f7d680;
+    border-radius: 16rpx 16rpx 0 0;
+    padding: 20rpx 24rpx;
+  }
+  
+  
+  .vip-card-box .card-bg{
+    position:absolute;
+    top: 20rpx;
+    right: 0;
+    width: 380rpx;
+    height: 260rpx;
+  }
+  
+  .vip-card-box .b-btn{
+    position: absolute;
+    right: 20rpx;
+    top: 16rpx;
+    width: 132rpx;
+    height: 40rpx;
+    text-align: center;
+    line-height: 40rpx;
+    font-size: 22rpx;
+    color: #36343c;
+    border-radius: 20px;
+    background: #f9e6af;
+    z-index: 1;
+  }
+  
+  .vip-card-box .b-btn{
+    position: absolute;
+    right: 20rpx;
+    top: 16rpx;
+    width: 132rpx;
+    height: 40rpx;
+    text-align: center;
+    line-height: 40rpx;
+    font-size: 22rpx;
+    color: #36343c;
+    border-radius: 20px;
+    /*background: linear-gradient(left, #f9e6af, #ffd465);*/ /*渐变不生效*/
+    background: #f9e6af;
+    z-index: 1;
+  }
+  
+  .vip-card-box .tit {
+    font-size: 22rpx;
+    color: #f7d680;
+    margin-bottom: 28rpx;
+  }
+  .vip-card-box .tit .iconfont{
+    color: #f6e5a3;
+    margin-right: 16rpx;
+  }
+  
+  
+  
+  
+  .vip-card-box .e-m{
+    font-size: 34rpx;
+    margin-top: 10rpx;
+  }
+  .vip-card-box .e-b{
+    font-size: 24rpx;
+    color: #d8cba9;
+    margin-top: 10rpx;
+  }
+  
+  
+  .cover-container{
+    /* padding-top: -150rpx; */
+    /* margin-top: 34rpx; */
+    transform: translateY(34rpx);
+    padding: 0 30rpx;
+    position:relative;
+    background: #f5f5f5;
+    padding-bottom: 20rpx;
+}
+
+.cover-container-scroll {
+    transform: translateY(20rpx);
+}
+  
+  
+  /* 导航部分 */
+  .cover-container .nav-section {
+    display: flex;
+    background: #fff;
+    padding: 20rpx 0;
+    border-radius: 25rpx;
+  }
+  
+  
+  .nav-section .nav-item {
+    width: 25%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .nav-section .nav-item .iconfont {
+    font-size: 50rpx;
+    color: #d43c33;
+    line-height: 70rpx;
+  }
+  
+  .nav-section .nav-item text:last-child {
+    font-size: 22rpx;
+  
+  }
+  
+  
+  /* 个人中心列表 */
+  .personalContent {
+    margin-top: 40rpx;
+    background: #fff;
+    padding: 20rpx;
+    border-radius: 25rpx;
+  }
+  
+  /* 最近播放 */
+  .personalContent .scrollView {
+    display: flex;
+    height: 160rpx;
+  }
+  .personalContent .recentPlay {
+    display: flex;
+  }
+
+  .recentPlayContainer {
+    overflow: hidden;
+  }
+  
+  .recentPlayContainer .title {
+    padding-left: 20rpx;
+    font-size: 26rpx;
+    color: #aaa;
+    line-height: 60rpx;
+  }
+  
+  .personalContent .recentPlay image {
+    width: 160rpx;
+    height: 160rpx;
+    margin-left: 20rpx;
+    border-radius: 20rpx;
+  }
+  
+
+  /* 最近播放记录的样式 */
+  .recentScorll {
+    display: flex;
+    height: 220rpx;
+    /* margin-top: 300rpx; */
+  }
+
+  .recentItem {
+    margin-right: 20rpx;
+    text-align: center;
+    font-size: 24rpx;
+  }
+
+  .recentItem image{
+    height: 180rpx;
+    width: 180rpx;
+    border-radius: 20rpx;
+  }
+
+  .listItem {
+    margin: 10rpx;
+    width: 100%;
+    display: flex;
+  }
+
+  .listItem .listCover {
+    height: 110rpx;
+    width: 110rpx;
+    border-radius: 20rpx;
+  }
+
+  .listItem .listInfo{
+    margin-left: 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .listItem text {
+    margin: 4rpx;
+  }
+
+  .listItem .listName {
+    font-size: 26rpx;
+    font-weight: 500;
+    color: #424242;
+  }
+
+  .listItem .listMusicNum {
+    font-size: 20rpx;
+    color: #aaa;
+  }
+
+  .personalContent>.title {
+    font-size: 24rpx;
+    color: #aaa;
+    margin: 20rpx;
+  }
+
+  .created .listItem {
+    margin: 25rpx 20rpx;
+  }
+
+  .tip {
+    font-size: 26rpx;
+    color: #aaa;
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+  }

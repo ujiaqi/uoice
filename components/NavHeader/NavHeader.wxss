@@ -1,0 +1,39 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .header .tuijian {
+    font-size: 40rpx;
+    font-weight: 500;
+  }
+  
+  .header .more {
+    margin-right: 30rpx;
+    width: 100rpx;
+    height: 50rpx;
+    text-align: center;
+    color: #353535;
+    font-size: 30rpx;
+    line-height: 50rpx;
+    border:1px solid #ccc;
+    border-radius: 40rpx;
+    padding-right: 20rpx;
+    
+  }
+  
+  .header .more text {
+    position: relative;
+  }
+  
+  .header .more text::after {
+    content: "";
+    height: 12rpx;
+    width: 12rpx;
+    border-top: 1px solid #353535;
+    border-right: 1px solid #353535;
+    transform:translate(-50%,-50%) rotate(45deg);
+    position: absolute;
+    top: 50%;
+    right: -30%;
+  }

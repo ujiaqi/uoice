@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "navigation-bar": "/components/navigation-bar/navigation-bar",
+    "bottomControl": "/components/bottomControl/bottomControl"
+  },
+  "navigationBarTitleText": "Recommend",
+  "navigationBarBackgroundColor": "#573e1f",
+  "navigationStyle": "custom"
+}

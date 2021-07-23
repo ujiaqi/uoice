@@ -1,0 +1,41 @@
+<view class="bottomControl">
+  <swiper class="bottomControlSwiper" wx:if="{{displayMusicList.length!==0}}" circular bindchange="changeMusic" data-type="swiper" current="{{playingMusicCurrent}}">
+    <swiper-item class="bottomControlSwiperItem" wx:for="{{displayMusicList}}" wx:key="index" bindtap="toSongDetail" data-song="{{item.id}}" data-musiclist="{{musicListId}}">
+      <view class="cover">
+        <image class="musicCover" src="{{item.picUrl}}?param=100y100" mode=" "></image>
+      </view>
+      <view class="musicInfo">
+        <text class="musicName">{{item.name}}</text>
+        <text class="fenge">-</text>
+        <text class="authorName">{{item.author}}</text>
+      </view>
+    </swiper-item>
+  </swiper>
+  <view class="bottomControlSwiper" wx:if="{{displayMusicList.length==0}}">
+    <view class="musicInfo">
+      <text class="musicName">暂无播放</text>
+    </view>
+  </view>
+  <view class="controlButton">
+    <!-- <text bindtap="handleMusicPlay" class="iconfont {{isPlay?'icon-zanting':'icon-bofang'}}"></text> -->
+    <text bindtap="handleMusicPlay" class="iconfont {{isPlay?'icon-zanting':'icon-bofang'}}"></text>
+    <text bindtap="showMusicList" class="iconfont icon-iconsMusicyemianbofangmoshiPlayList"></text>
+  </view>
+  <!-- 遮罩层 -->
+  <view class="maskLayer {{showList==58?'':'isMaskLayerShow'}}" bindtap="hideMusicList" catchtouchmove="true"></view>
+  <!-- 播放列表 -->
+  <view class="musicList {{showList==58?'':'isListShow'}}" catchtouchmove="true">
+    <view class="musicListTitle">
+      当前播放
+      <!-- <text class="musicListLength">({{playingMusicList.length}})</text> -->
+    </view>
+    <scroll-view class="musicListSrcoll" scroll-y scroll-anchoring bindscrolltoupper="addTopDisplayList" bindscrolltolower="addBottomDisplayList" scroll-into-view="t{{scrollPosition}}">
+      <view class="musicItem" wx:for="{{showListData}}" wx:key="index" data-index="{{index}}" data-musicid="{{item.id}}" data-type="click" bindtap="changeMusic" id="t{{index}}">
+        <text class="musicName">{{item.name}}</text>
+        <view class="fenge">-</view>
+        <text class="author">{{item.ar[0].name}}</text>
+        <view class="button">×</view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

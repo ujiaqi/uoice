@@ -1,0 +1,4 @@
+/* pages/videoPlayer/videoPlayer.wxss */
+page {
+    background-color: #fbfbfb;
+}

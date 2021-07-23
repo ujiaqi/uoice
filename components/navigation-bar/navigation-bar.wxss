@@ -1,0 +1,19 @@
+/* components/navigation-bar/navigation-bar.wxss */
+@import "/static/iconfont/iconfont.wxss";
+
+.header {
+    position: fixed;
+    margin: 5rpx;
+    text-align: center;
+    line-height: 80rpx;
+    top: 40rpx;
+    left: 20rpx;
+    width: 80rpx;
+    height: 80rpx;
+    z-index: 10000;
+}
+
+.goBack {
+    color: white;
+    font-size: 40rpx;
+}

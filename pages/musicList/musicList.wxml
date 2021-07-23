@@ -1,0 +1,35 @@
+<navigation-bar bindtap="handleGoBack"></navigation-bar>
+<view class="musicListContainer" bindtouchend="handleTouchEnd">
+    <!-- 头部区域 -->
+    <view class="header" style="padding-top:calc({{barHeight}}px + 8vh)">
+        <image class="background" src="{{musicList.coverImgUrl}}" mode="aspectFill"></image>
+        <image class="cover" src="{{musicList.coverImgUrl}}"></image>
+        <view class="listInfo">
+            <text class="title">{{musicList.name}}</text>
+            <view class="creator">
+                <image class="creatorAvatar" src="{{musicList.creator.avatarUrl}}"></image>
+                <text class="creatorName">{{musicList.creator.nickname}}</text>
+            </view>
+            <text class="desc">{{musicList.description==null?'':musicList.description}}</text>
+        </view>
+    </view>
+    <!-- 列表区域 -->
+    <scroll-view scroll-y="{{isScroll}}" class="listContainer" wx:if="{{musicList.tracks[0]}}" bindscrolltolower="reachBottom" lower-threshold="100">
+        <view class="listItem" wx:for="{{musicList.tracks}}" bindtap="toSongDetail" data-song="{{item.id}}" wx:key="index">
+            <view class="index">{{index+1}}</view>
+            <view class="musicInfo">
+                <text class="musicName">{{item.name}}</text>
+                <text class="author">{{item.author}} - {{item.author}}</text>
+            </view>
+        </view>
+        <view class="bottom"></view>
+        <view class="loadingContainer">
+            <mp-loading show="{{isLoad}}"></mp-loading>
+            <view class="isMore" bindtap="loadMore" style="display:{{isMore?'block':'none'}}">
+                点击加载全部数据
+            </view>
+        </view>
+    </scroll-view>
+    <view class="tip" wx:else>歌单数据加载中...</view>
+</view>
+<bottomControl></bottomControl>

@@ -1,0 +1,75 @@
+<navigation-bar barHeight="{{barHeight}}" bindtap="handleGoBack"></navigation-bar>
+<view class="songDetailContainer">
+    <image class="background" mode="center" src="{{musicInfo.picUrl}}?param=1000y1000"></image>
+    <!-- <mp-navigation-bar background="#fff" title="123"></mp-navigation-bar> -->
+    <view class="title" style="margin-top:calc(5vh + {{barHeight}}rpx);">
+        <text class="songName">{{musicInfo.name}}</text>
+        <text class="author">{{musicInfo.author}}</text>
+    </view>
+    <image class="needle {{isNeedlePlay?'needleRotate':''}} {{isLyricsShow?'hidden':''}}" src="/static/images/song/needle.png" />
+    <swiper class="discSwiper {{isLyricsShow?'hidden':''}}" circular bindchange="swiperDisc" bindtransition="moveSwiperItem" bindanimationfinish="moveSwiperItemEnd">
+        <swiper-item class="discSwiperItem" wx:for="{{discSwiper}}" wx:key="index">
+            <view class="discContainer {{isPlay?'':'pause'}} {{switchMusicAnimationState&&discSwiperIndex==index?'discAnimation':''}}" bindtap="switchShow">
+                <image class="disc" src="/static/images/song/disc.png" />
+                <image class="musicImg" src="{{item.picUrl}}?param=1000y1000" />
+            </view>
+        </swiper-item>
+    </swiper>
+    <!-- 歌词区域 -->
+    <scroll-view class="lyrics {{isLyricsShow?'':'hidden'}}" enable-flex scroll-y bindtap="switchShow" scroll-into-view="t{{lyricsIndex-4}}" scroll-with-animation>
+        <view class="placeHolder" id="t-3"></view>
+        <view class="placeHolder" id="t-2"></view>
+        <view class="placeHolder" id="t-1"></view>
+        <!-- 因为每句歌词对应的时间都是该句歌词结束的时间，而触发切换的刚好又是每句对应的时间，导致索引快了一句，所以lyricsIndex需要-1 -->
+        <view class="lyricsItem {{lyricsIndex-1==index?'selectedLyricsItem':''}}" wx:for="{{lyrics}}" id="t{{index}}">
+            {{item[1]}}
+        </view>
+        <view class="placeHolder"></view>
+        <view class="placeHolder"></view>
+        <view class="placeHolder"></view>
+    </scroll-view>
+    <!-- 喜欢、收藏、评论按钮 -->
+    <view class="buttonContainer">
+        <text class="iconfont icon-xihuan {{isLike?'like':''}}" bindtap="like"></text>
+        <text class="iconfont icon-tianjia" bindtap="handlecollect"></text>
+        <text class="iconfont icon-pinglun" bindtap="toComments"></text>
+    </view>
+    <!-- 进度条区域 -->
+    <view class="progressControl">
+        <text>{{currentTime}}</text>
+        <!-- 总进度条 -->
+        <!-- <view class="barControl"> -->
+        <!-- 实时进度条 -->
+        <!-- <view class="audioCurrentTimeBar" style="width:{{currentWidth}}%">
+                <view class="audioCircle"></view>
+            </view> -->
+        <slider class="audioCurrentTimeBar" bindchange="handleSliderChange" value="{{currentWidth}}" block-size="12" activeColor="#da3f34" background-color="#dadada" />
+        <!-- </view> -->
+        <text>{{durationTime}}</text>
+    </view>
+    <!-- 底部控制播放区域 -->
+    <view class="musicControl">
+        <text class="iconfont icon-iconsMusicyemianbofangmoshiShuffle"></text>
+        <text class="iconfont icon-shangyishou" data-type="pre" bindtap="handleSwitch"></text>
+        <text bindtap="handleMusicPlay" class="iconfont {{isPlay?'icon-zanting':'icon-bofang'}} big"></text>
+        <text class="iconfont icon-next" data-type="next" bindtap="handleSwitch"></text>
+        <text class="iconfont icon-iconsMusicyemianbofangmoshiPlayList" bindtap="showMusicList"></text>
+    </view>
+    <!-- 遮罩层 -->
+    <view class="maskLayer {{showList==58?'':'isMaskLayerShow'}}" bindtap="hideMusicList"></view>
+    <!-- 播放列表 -->
+    <view class="musicList" style="transform:translate(-50%,{{showList}}vh)">
+        <view class="musicListTitle">
+            当前播放
+            <!-- <text class="musicListLength">({{playingMusicList.length}})</text> -->
+        </view>
+        <scroll-view class="musicListSrcoll" scroll-y bindscrolltoupper="addTopDisplayList" bindscrolltolower="addBottomDisplayList" scroll-into-view="t{{scrollPosition}}">
+            <view class="musicItem" wx:for="{{displayMusicList}}" wx:key="index" data-musicid="{{item.id}}" data-type="click" bindtap="handleSwitch" id="t{{index}}">
+                <text class="musicName">{{item.name}}</text>
+                <view class="fenge">-</view>
+                <text class="author">{{item.author}}</text>
+                <view class="button">×</view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

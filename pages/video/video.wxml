@@ -1,0 +1,9 @@
+<view class="videoContainer">
+    
+    <!-- 头部区域 -->
+    <view class="header">
+        <view class="search" bindtap="toSearch">搜索框</view>
+    </view>
+    
+    <bottomControl></bottomControl>
+</view>
